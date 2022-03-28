@@ -53,7 +53,7 @@
 </head>
 
 <body>
-    <h1>{{decision}}</h1>
+    <h1><img src="/images/logo.png" class="logo"/> {{decision}}</h1>
     {% for paragraph in decision_object.paragraphs %}
     <h2>{{paragraph.index}}</h2>
     {% if paragraph.matches %}

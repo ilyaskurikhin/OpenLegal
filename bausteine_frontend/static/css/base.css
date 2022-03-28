@@ -64,6 +64,13 @@ li a:hover {
   margin: 0 auto;
 }
 
+img.logo {
+  height: 2.2em;
+  position: relative;
+  top: 0.78em;
+  margin-right: 0.25em;
+}
+
 .matches-buttons {
   display: flex;
   justify-content: center;

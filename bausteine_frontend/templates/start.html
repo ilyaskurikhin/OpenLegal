@@ -6,10 +6,10 @@
 </head>
 
 <body>
-    <h1>BGE Textbausteine</h1>
+    <h1><img src="/images/logo.png" class="logo"/>BGE Textbausteine</h1>
     <div class="flex-container start-page-container">
 
-        <h2>BGE Entscheide</h2>
+        <h2>Entscheide</h2>
         <ul>
             {% for decision in decisions %}
             <li><a href="{{url_for('decision_page', id=decision)}}">{{decision}}</a></li>
