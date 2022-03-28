@@ -14,7 +14,7 @@ def get_item(name):
     file = open(path, "r", encoding="utf-8")
 
     # read file
-    html = BeautifulSoup(file.read())
+    html = BeautifulSoup(file.read(),features="html5lib")
     
     # the content of the page
     content = html.find("div", {"id": "content"})
@@ -75,7 +75,7 @@ def get_item(name):
     data["paragraphs"] = paragraphs
     return data
 
-  def compare_all_paragraphs(data):
+def compare_all_paragraphs(data):
 
      
     number_of_paragraphs = 0
