@@ -37,7 +37,8 @@ def decision_page(id: str):
                                 'decision': decision_name,
                                 'id': decision_name.replace(' ', '-'),
                                 'original': par['original'], 
-                                'confidence': match_rate}
+                                'confidence': match_rate,
+                                'index': par['index']}
                 pass
             print('gugus!!!!!!!!!')
 

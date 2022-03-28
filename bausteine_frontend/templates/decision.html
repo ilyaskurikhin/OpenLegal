@@ -10,14 +10,44 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.js"></script>
     <script>
+        const configuration = {
+            drawFileList: false,
+            fileListToggle: false,
+            fileListStartVisible: false,
+            // fileContentToggle: false,
+            matching: 'lines',
+            outputFormat: 'side-by-side',
+            synchronisedScroll: true,
+            highlight: false,
+        };
+
+
         lastOpenedDecision = undefined;
-        function openDecision(id) {
+        function openDecision(id, original, compared) {
             if (lastOpenedDecision != undefined) {
                 lastOpenedDecision.classList.toggle('show', false);
             }
             const element = document.getElementById(id);
             element.classList.toggle('show', true);
             lastOpenedDecision = element;
+            console.log(original);
+            renderDecision(id, original, compared);
+        }
+
+
+
+        function renderDecision(id, original, toCompare) {
+            var targetElement = document.getElementById(id);
+
+
+            const diffString = Diff.createTwoFilesPatch(' ', ' ', original, toCompare);
+            const diff2htmlUi = new Diff2HtmlUI(targetElement, diffString, configuration);
+
+            diff2htmlUi.draw();
+            diff2htmlUi.highlightCode();
+
+            document.querySelectorAll('.d2h-code-line').forEach(x=>x.style.whiteSpace = "pre-wrap");
+            document.querySelectorAll('.d2h-code-line-ctn').forEach(x=>x.style.whiteSpace = "pre-wrap");
         }
     </script>
 </head>
@@ -29,26 +59,22 @@
     {% if paragraph.matches %}
     <div class="matches-buttons">
         <!----> {% for hash, match in paragraph.matches.items() %}
-        <button onclick="openDecision('{{match["id"]}}')">{{match['decision']}}</button>
+        {% with id=match["id"] %}
+        <button onclick="openDecision('{{paragraph.index}}', '{{paragraph.original | safe}}', '{{match.original}}')">
+            {{match['decision']}} E. {{match.index}}</button>
+        {% endwith %}
         {% endfor %}
     </div>
-    {% endif %}
     <div class="flex-container decision-paragraph">
-        <div class="left">
+        <div id="{{paragraph.index}}" class="left">
             <p>{{paragraph.original}}</p>
         </div>
-        <div class="right">
-            {% if paragraph.matches %}
-            {% for hash, match in paragraph.matches.items() %}
-            <div id="{{match['id']}}" class="hidden">
-                {{match['original']}}
-            </div>
-            {% endfor %}
-            {% else %}
-            <p>(Kein anderer Entscheid hat ähnliche Textbausteine.)</p>
-            {% endif %}
-        </div>
     </div>
+    {% else %}
+    <div class="left">
+        <p>{{paragraph.original}}</p>
+    </div>
+    {% endif %}
     {% endfor %}
 </body>
 
