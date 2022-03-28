@@ -64,6 +64,12 @@ li a:hover {
   padding: 2em;
 }
 
+.matches-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
 .matches-buttons button {
   color: green;
   font-weight: bold;
