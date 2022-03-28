@@ -46,8 +46,13 @@ li a:hover {
 }
 
 /*decision page: */
+.decision-paragraph.d2h-code-line,
+.decision-paragraph.d2h-code-line-ctn {
+  white-space: pre-wrap;
+}
+
 .decision-paragraph {
-  max-width: 100em;
+  max-width: calc(100% - 6em);
   margin: 0 auto;
   gap: 3em;
 }
@@ -56,12 +61,7 @@ li a:hover {
   flex: 1;
   box-shadow: 0px 3px 7px black;
   padding: 2em;
-}
-.right {
-  max-width: 50em;
-  flex: 1;
-  box-shadow: 0px 3px 7px black;
-  padding: 2em;
+  margin: 0 auto;
 }
 
 .matches-buttons {
