@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="/css/base.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/github.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.js"></script>
+</head>
+
+<body>
+    <h1>{{decision}}</h1>
+    {% for paragraph in decision_object.paragraphs %}
+    <h2>{{paragraph.index}}</h2>
+    <div class="flex-container decision-paragraph">
+        <div class="left">
+            <p>{{paragraph.original}}</p>
+        </div>
+        <div class="right">
+            {% if paragraph.matches %}
+            <!----> {% for hash, match in paragraph.matches.items() %}
+            <!----> {{match['original']}}
+            {% endfor %}
+            <!-- <p>{{paragraph.matches}}</p> -->
+            {% else %}
+            <p>(Kein anderer Entscheid hat ähnliche Textbausteine.)</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>

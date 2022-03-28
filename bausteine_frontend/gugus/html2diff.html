@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/github.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.js"></script>
+</head>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var targetElement = document.getElementById('myDiffElement');
+    var configuration = {
+      drawFileList: false,
+      fileListToggle: false,
+      fileListStartVisible: false,
+      // fileContentToggle: false,
+      matching: 'lines',
+      outputFormat: 'side-by-side',
+      synchronisedScroll: true,
+      highlight: false,
+    };
+
+    const diffString = Diff.createTwoFilesPatch(' ', ' ',
+      'Das Gesetz muss in erster Linie aus sich selbst heraus, das heisst nach dem Wortlaut, Sinn und Zweck und den ihm zugrunde400liegenden Wertungen auf der Basis einer teleologischen Verständnismethode ausgelegt werden.' +
+      '\nDie Gesetzesauslegung hat sich vom Gedanken leiten zu lassen, dass nicht schon der Wortlaut die Norm darstellt, sondern erst das an Sachverhalten verstandene und konkretisierte Gesetz.' +
+      '\nGefordert ist die sachlich richtige Entscheidung im normativen Gefüge, ausgerichtet auf ein befriedigendes Ergebnis der ratio legis. ' +
+      '\nDabei befolgt das Bundesgericht einen pragmatischen Methodenpluralismus und lehnt es namentlich ab, die einzelnen Auslegungselemente einer hierarchischen Prioritätsordnung zu unterstellen (BGE 141 III 195 E. 2.4; BGE 140 III 206 E. 3.5.4; BGE 140 IV 1 E. 3.1; je mit Hinweisen).',
+
+      'Das Gesetz muss in erster Linie aus sich selbst heraus, das heisst nach seinem Wortlaut, Sinn und Zweck und den ihm zugrunde liegenden Wertungen auf der Basis einer teleologischen Verständnismethode ausgelegt werden.' +
+      '\nDie Gesetzesauslegung hat sich vom Gedanken leiten zu lassen, dass nicht schon der Wortlaut die Norm darstellt, sondern erst das an den Sachverhalten verstandene und konkretisierte Gesetz.'
+      + '\nGefordert ist die sachlich richtige Entscheidung im normativen Gefüge, ausgerichtet auf ein befriedigendes Ergebnis der ratio legis. ' + 
+      '\Der Auslegungsvorgang soll zu einem vernünftigen, praktikablen und befriedigenden Ergebnis führen, das dem Problemlösungsbedarf Rechnung trägt, ohne die Wertungsentscheidungen des geschichtlichen Normsetzers zu missachten (TSCHANNEN/ZIMMERLI/MÜLLER, Allgemeines Verwaltungsrecht, 4. Aufl. 2014, § 25 Rz. 2 S. 208). ' + 
+      '\nDabei befolgt das Bundesgericht einen pragmatischen Methodenpluralismus; es lehnt es ab, die einzelnen Auslegungselemente hierarchisch zu ordnen (BGE 140 III 206 E. 3.5.4 S. 214; BGE 137 V 434 E. 3.2 S. 437; BGE 136 III 23 E. 6.6.2.1 S. 37; BGE 136 V 195 E. 7.1 S. 203).');
+    console.log(diffString);
+
+
+    var diff2htmlUi = new Diff2HtmlUI(targetElement, diffString, configuration);
+    diff2htmlUi.draw();
+    diff2htmlUi.highlightCode();
+  });
+</script>
+
+<body>
+  <div id="myDiffElement"></div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="/css/base.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>BGE Textbausteine</h1>
+    <div class="flex-container start-page-container">
+
+        <h2>BGE Entscheide</h2>
+        <ul>
+            {% for decision in decisions %}
+            <li><a href="{{url_for('decision_page', id=decision)}}">{{decision}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+body {
+  font-family: Helvetica;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.start-page-container {
+  width: 37em;
+  margin: 0 auto;
+  gap: 9em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+ul {
+  font-size: 2em;
+}
+
+li {
+  list-style-type: none;
+}
+li a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+li a:hover {
+  text-shadow: 0px 0px 3px black;
+}
+
+/*decision page: */
+.decision-paragraph {
+  max-width: 100em;
+  margin: 0 auto;
+  gap: 3em;
+}
+.left {
+  max-width: 50em;
+  flex: 1;
+  box-shadow: 0px 3px 7px black;
+  padding: 2em;
+}
+.right {
+  max-width: 50em;
+  flex: 1;
+  box-shadow: 0px 3px 7px black;
+  padding: 2em;
+}
