@@ -9,6 +9,17 @@
         href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.js"></script>
+    <script>
+        lastOpenedDecision = undefined;
+        function openDecision(id) {
+            if (lastOpenedDecision != undefined){
+                lastOpenedDecision.classList.toggle('show', false);
+            }
+            const element = document.getElementById(id);
+            element.classList.toggle('show', true);
+            lastOpenedDecision = element;
+        }
+    </script>
 </head>
 
 <body>
@@ -21,10 +32,16 @@
         </div>
         <div class="right">
             {% if paragraph.matches %}
-            <!----> {% for hash, match in paragraph.matches.items() %}
-            <!----> {{match['original']}}
+            <div class="matches-buttons">
+                <!----> {% for hash, match in paragraph.matches.items() %}
+                <button onclick="openDecision('{{match["id"]}}')">{{match['decision']}}</button>
+                {% endfor %}
+            </div>
+            {% for hash, match in paragraph.matches.items() %}
+            <div id="{{match['id']}}" class="hidden">
+                {{match['original']}}
+            </div>
             {% endfor %}
-            <!-- <p>{{paragraph.matches}}</p> -->
             {% else %}
             <p>(Kein anderer Entscheid hat ähnliche Textbausteine.)</p>
             {% endif %}

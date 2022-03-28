@@ -2,6 +2,14 @@ body {
   font-family: Helvetica;
 }
 
+.hidden {
+  display: none;
+}
+
+.hidden.show {
+  display: block;
+}
+
 .flex-container {
   display: flex;
 }
@@ -54,4 +62,12 @@ li a:hover {
   flex: 1;
   box-shadow: 0px 3px 7px black;
   padding: 2em;
+}
+
+.matches-buttons button {
+  color: green;
+  font-weight: bold;
+  border: 2px solid green;
+  border-radius: 2em;
+  padding: 0.5em;
 }

@@ -34,7 +34,10 @@ def decision_page(id: str):
                     for par in dec['paragraphs']:
                         if __correct_hash(par['hash']) == match:
                             matches[match] = {
-                                'original': par['original'], 'confidence': match_rate}
+                                'decision': decision_name,
+                                'id': decision_name.replace(' ', '-'),
+                                'original': par['original'], 
+                                'confidence': match_rate}
                 pass
             print('gugus!!!!!!!!!')
 
