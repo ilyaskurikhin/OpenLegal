@@ -19,3 +19,11 @@ for entsch in Entscheidungen:
         file.write(response.text)
         file.close()
 
+"""
+for x in range(30):
+    url = "https://bger.li/138 I " + str(x)
+    response = API_getInfos(url)
+    with open('output/138 I ' + str(x) + ".html", "w", encoding="UTF-8") as file:
+        file.write(response.text)
+        file.close()
+"""
